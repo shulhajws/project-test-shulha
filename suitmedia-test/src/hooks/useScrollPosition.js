@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 
 const useScrollPosition = () => {
@@ -29,3 +28,5 @@ const useScrollPosition = () => {
 
   return { scrollPosition, scrollDirection };
 };
+
+export default useScrollPosition;

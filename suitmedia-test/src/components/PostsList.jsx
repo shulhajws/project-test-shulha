@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { fetchPosts } from '../services/api';
 import PostCard from './PostCard';
 import Pagination from './Pagination';
+import api from '../services/api';
 
 const PostsList = () => {
   const navigate = useNavigate();
@@ -21,12 +21,10 @@ const PostsList = () => {
     total: 0,
   });
   
-  // Get URL params with defaults
   const page = parseInt(queryParams.get('page') || '1', 10);
   const pageSize = parseInt(queryParams.get('size') || '10', 10);
-  const sortOrder = queryParams.get('sort') || '-published_at'; // Default to newest
+  const sortOrder = queryParams.get('sort') || '-published_at'; 
   
-  // Update URL params when filters change
   const updateUrlParams = useCallback((newParams) => {
     const params = new URLSearchParams(location.search);
     
@@ -44,24 +42,20 @@ const PostsList = () => {
     }, { replace: true });
   }, [location.search, navigate]);
   
-  // Handle page change
   const handlePageChange = (newPage) => {
     updateUrlParams({ page: newPage });
   };
   
-  // Handle page size change
   const handlePageSizeChange = (e) => {
     const newSize = e.target.value;
-    updateUrlParams({ size: newSize, page: 1 }); // Reset to page 1 when changing page size
+    updateUrlParams({ size: newSize, page: 1 }); 
   };
   
-  // Handle sort change
   const handleSortChange = (e) => {
     const value = e.target.value;
-    updateUrlParams({ sort: value, page: 1 }); // Reset to page 1 when changing sort
+    updateUrlParams({ sort: value, page: 1 }); 
   };
   
-  // Fetch posts when params change
   useEffect(() => {
     const loadPosts = async () => {
       setLoading(true);
@@ -153,3 +147,5 @@ const PostsList = () => {
     </div>
   );
 };
+
+export default PostsList;

@@ -6,7 +6,6 @@ const Banner = ({ title, subtitle, backgroundImage }) => {
   
   return (
     <div className="relative h-96 overflow-hidden">
-      {/* Background image with parallax effect */}
       <div 
         className="absolute inset-0 bg-cover bg-center"
         style={{
@@ -15,10 +14,8 @@ const Banner = ({ title, subtitle, backgroundImage }) => {
         }}
       />
       
-      {/* Dark overlay for better text readability */}
       <div className="absolute inset-0 bg-black/50 z-10"></div>
       
-      {/* Slanted bottom */}
       <div 
         className="absolute bottom-0 left-0 right-0 h-20 bg-gray-100 z-20"
         style={{
@@ -26,7 +23,6 @@ const Banner = ({ title, subtitle, backgroundImage }) => {
         }}
       ></div>
       
-      {/* Text content with opposite parallax effect */}
       <div 
         className="relative z-30 flex flex-col justify-center items-center h-full text-white text-center"
         style={{
@@ -39,3 +35,5 @@ const Banner = ({ title, subtitle, backgroundImage }) => {
     </div>
   );
 };
+
+export default Banner;

@@ -7,14 +7,14 @@ const PostCard = ({ post }) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', {
       day: 'numeric',
-      month: 'LONG',
+      month: 'long', 
       year: 'numeric',
     }).toUpperCase();
   };
   
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-md h-full flex flex-col">
-      <div className="relative pt-[56.25%]"> {/* 16:9 aspect ratio */}
+      <div className="relative pt-[56.25%]"> 
         {!imageLoaded && (
           <div className="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center">
             <span className="text-gray-400">Loading...</span>
@@ -36,3 +36,5 @@ const PostCard = ({ post }) => {
     </div>
   );
 };
+
+export default PostCard;

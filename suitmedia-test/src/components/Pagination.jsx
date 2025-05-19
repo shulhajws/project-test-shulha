@@ -4,29 +4,23 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const getPageNumbers = () => {
     const pages = [];
     
-    // Always show first page
     pages.push(1);
     
-    // Calculate range around current page
     let startPage = Math.max(2, currentPage - 1);
     let endPage = Math.min(totalPages - 1, currentPage + 1);
     
-    // Add ellipsis after first page if needed
     if (startPage > 2) {
       pages.push('...');
     }
     
-    // Add pages around current page
     for (let i = startPage; i <= endPage; i++) {
       pages.push(i);
     }
     
-    // Add ellipsis before last page if needed
     if (endPage < totalPages - 1) {
       pages.push('...');
     }
     
-    // Always show last page if it's not the first page
     if (totalPages > 1) {
       pages.push(totalPages);
     }
@@ -80,3 +74,5 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     </div>
   );
 };
+
+export default Pagination;

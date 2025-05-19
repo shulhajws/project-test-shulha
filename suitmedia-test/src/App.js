@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Banner from './components/Banner';
+import PostsList from './components/PostsList';
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="min-h-screen bg-gray-100">
+        <Header />
+        
+        <main>
+          <Routes>
+            <Route 
+              path="/" 
+              element={
+                <>
+                  <Banner 
+                    title="Ideas" 
+                    subtitle="Where all our great things begin" 
+                    backgroundImage="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80" 
+                  />
+                  <PostsList />
+                </>
+              } 
+            />
+            <Route 
+              path="/ideas" 
+              element={
+                <>
+                  <Banner 
+                    title="Ideas" 
+                    subtitle="Where all our great things begin" 
+                    backgroundImage="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80" 
+                  />
+                  <PostsList />
+                </>
+              } 
+            />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
